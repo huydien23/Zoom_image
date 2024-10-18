@@ -5,33 +5,32 @@
 }
 
 body {
+    width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #f1f1f1;
 }
 
 
-img {
+.container img {
     width: 500px;
     height: 350px;
     object-fit: cover;
-    margin: 100px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    margin: 0 100px;
+    cursor: zoom-in;
 }
 
-#result {
-    border: 1px solid black;
-    width: 200px;
-    height: 200px;
-    position: fixed;
-    transform: translate(-50%, -50%);
-}
 
 #mirror {
-    width: 200px;
+    width: 250px;
     height: 250px;
-    margin: 100px;
+    border-radius: 50%;
     background-image: url(img/hoang_hon.jpg);
-    background-size: 50px 50px;
-    background-repeat: no-repeat;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }

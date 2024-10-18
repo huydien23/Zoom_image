@@ -1,22 +1,23 @@
-// var result = document.querySelector('#result');
-
-// document.addEventListener('mousemove', function(event) {
-//   result.style.top = `${event.clientY}px`;
-//     result.style.left = `${event.clientX}px`;
-// });
-
-var img = document.querySelector('img');
+var imgList = document.querySelectorAll('.container img');
 var mirror = document.querySelector('#mirror');
-img.addEventListener('mousemove', function(event) {
-    var w = this.offsetWidth
-    var h = this.offsetHeight
-    var mouseWithImgBorder = event.pageX - this.offsetLeft
-    var mouseWithImgBorderY = event.pageY - this.offsetTop
+var scope = 4;
 
-    var x = (mouseWithImgBorder / w) * 100
-    var y = (mouseWithImgBorderY / h) * 100
+imgList.forEach(function(img) {
+    
+    img.addEventListener('mousemove', function(event) {
+        var percentX = (event.offsetX / this.offsetWidth) * 100;
+        var percentY = (event.offsetY / this.offsetHeight) * 100;
+        mirror.style.top = `${event.clientY}px`;
+        mirror.style.left = `${event.clientX}px`;
+        mirror.style.backgroundSize = `1000px 1000px`;
+        mirror.style.backgroundPosition = `${percentX}% ${percentY}%`;
 
-    mirror.style.backgroundPosition = `${x}% ${y}%`
+        var imgSrc = event.target.getAttribute('src');
+        mirror.style.backgroundImage = `url(${imgSrc})`;
+    });
 
+    img.addEventListener('mouseleave', function() {
+        mirror.style.backgroundImage = 'none';
+    });
 });
 
